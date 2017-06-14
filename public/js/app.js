@@ -39,28 +39,28 @@
 			// controls speed
 			if (++this.frame % 20 === 0) this.dir = -this.dir;
 
-			// ---- create giants ---- dosent work
-			// if (
-			// 	dancerDrag &&
-			// 	this === dancerDrag &&
-			// 	this.size < 16 &&
-			// 	this.frame > 600
-			// ) {
-			// 	dancerDrag = null;
-			// 	dancers.push(
-			// 		new Robot(
-			// 			this.color,
-			// 			this.light * 1.25,
-			// 			this.size * 2,
-			// 			pointer.x,
-			// 			pointer.y - 100 * this.size * 2,
-			// 			struct
-			// 		)
-			// 	);
-			// 	dancers.sort(function(d0, d1) {
-			// 		return d0.size - d1.size;
-			// 	});
-			// }
+			// ---- creates a giant duplicate when dancer is dragged
+			if (
+				dancerDrag &&
+				this === dancerDrag &&
+				this.size < 16 &&
+				this.frame > 600
+			) {
+				dancerDrag = null;
+				dancers.push(
+					new Robot(
+						this.color,
+						this.light * 1.25,
+						this.size * 2,
+						pointer.x,
+						pointer.y - 100 * this.size * 2,
+						struct
+					)
+				);
+				dancers.sort(function(d0, d1) {
+					return d0.size - d1.size;
+				});
+			}
 
 			// ---- update links ---- makes robots keep person shape
 			for (let link of this.links) {
@@ -185,7 +185,7 @@
           //gadget square size
 					const s = size / 10;
           // gadget square color
-					ict.fillStyle = "black";
+					ict.fillStyle = "blue";
 					ict.fillRect(size * 0.5 - s, size * 0.5 - s, s * 2, s * 2);
 					ict.fillRect(size * 0.5 - s + dist, size * 0.5 - s, s * 2, s * 2);
 				}
