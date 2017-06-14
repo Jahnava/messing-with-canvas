@@ -192,7 +192,7 @@
 				return image;
 			}
 
-			this.p0 = p0;
+			this.p0 = p0;``
 			this.p1 = p1;
 			this.distance = dist;
 			this.size = size;
@@ -404,6 +404,7 @@
 		],
 
 		links: [
+      //people body structure
 			[3, 7, 12, 0.5],
 			[1, 3, 24, 0.5],
 			[1, 0, 18, 0.5],
@@ -418,21 +419,24 @@
 		]
 	};
 
-	// ---- instanciate robots ----
+	// ----  sets the peoples color, placement, light, and darkness ----
 	const dancers = [];
-
-	for (let i = 0; i < 6; i++) {
+//sets number of dancers on the screen
+	for (let i = 0; i < 7; i++) {
 		dancers.push(
 			new Robot(
-				i * 360 / 7,
-				80,
+      //lightness &darkness
+				i * 360 / 10,
+				20,
 				4,
+      //confines dancers to specific area on canvas
 				(i + 2) * canvas.width / 9,
 				canvas.height * ground - 295,
 				struct
 			)
 		);
 	}
+
 
 	run();
 }
